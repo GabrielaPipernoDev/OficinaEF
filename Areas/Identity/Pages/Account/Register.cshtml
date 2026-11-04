@@ -1,0 +1,362 @@
+﻿@page
+@model RegisterModel
+ 
+@{
+    ViewData["Title"] = "Cadastro - Angel's";
+}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #d9ddef;
+    }
+
+    .register-container {
+        width: 94%;
+        max-width: 1700px;
+        min-height: 760px;
+        height: calc(100vh - 20px);
+        margin: 10px auto;
+        display: flex;
+        background: white;
+        overflow: hidden;
+        border-radius: 3px;
+    }
+
+    /* LADO ESQUERDO: IMAGEM */
+
+    .register-left {
+        width: 52%;
+        min-height: 760px;
+
+        background-image:
+            linear-gradient(
+                to top,
+                rgba(30, 15, 23, 0.72),
+                rgba(30, 15, 23, 0.02)
+            ),
+            url('/images/register-sakura.jpg');
+
+        background-size: cover;
+        background-position: center;
+
+        display: flex;
+        align-items: flex-end;
+        padding: 65px;
+        color: white;
+    }
+
+    .image-content {
+        max-width: 560px;
+        margin-bottom: 35px;
+    }
+
+    .image-content h2 {
+        font-size: 48px;
+        line-height: 1.18;
+        margin-bottom: 22px;
+        font-weight: 600;
+    }
+
+    .image-content p {
+        font-size: 15px;
+        line-height: 1.8;
+        margin-bottom: 24px;
+        color: #f8edf1;
+    }
+
+    .image-content span {
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    /* LADO DIREITO: CADASTRO */
+
+    .register-right {
+        width: 48%;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+    }
+
+    .register-content {
+        width: 100%;
+        max-width: 390px;
+    }
+
+    .logo {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .logo-icon {
+        font-size: 28px;
+        background-color: #fff5f8;
+        padding: 13px;
+        border-radius: 12px;
+        display: inline-block;
+        margin-bottom: 12px;
+    }
+
+    .logo h1 {
+        font-size: 32px;
+        color: #29232a;
+        margin-bottom: 9px;
+        letter-spacing: 1px;
+    }
+
+    .logo p {
+        font-size: 13px;
+        color: #89818a;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 13px;
+        color: #39313a;
+        margin-bottom: 7px;
+    }
+
+    .form-group input {
+        width: 100%;
+        height: 42px;
+        padding: 11px;
+        border: 1px solid #ded9de;
+        outline: none;
+        font-size: 13px;
+        transition: 0.3s;
+    }
+
+    .form-group input:focus {
+        border-color: #d59aaa;
+        box-shadow: 0 0 5px #f2d5df;
+    }
+
+    .terms {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 11px;
+        color: #77717a;
+        margin: 19px 0 23px;
+        line-height: 1.5;
+    }
+
+    .terms input {
+        margin-top: 2px;
+        accent-color: #b8798e;
+    }
+
+    .terms a {
+        color: #985e74;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .btn-register {
+        width: 100%;
+        height: 45px;
+        background-color: #29232a;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    .btn-register:hover {
+        background-color: #a66c80;
+    }
+
+    .login-link {
+        text-align: center;
+        margin-top: 23px;
+        font-size: 12px;
+        color: #89818a;
+    }
+
+    .login-link a {
+        color: #985e74;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .login-link a:hover {
+        text-decoration: underline;
+    }
+
+    /* RESPONSIVIDADE */
+
+    @@media (max-width: 1000px) {
+        .register-container {
+            width: 96%;
+        }
+
+        .register-left {
+            padding: 35px;
+        }
+
+        .image-content h2 {
+            font-size: 36px;
+        }
+
+        .register-right {
+            padding: 25px;
+        }
+    }
+
+    @@media (max-width: 650px) {
+        .register-container {
+            width: 100%;
+            height: auto;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .register-left {
+            display: none;
+        }
+
+        .register-right {
+            width: 100%;
+            min-height: 100vh;
+            padding: 25px;
+        }
+    }
+</style>
+
+<div class="register-container">
+
+    <!-- LADO ESQUERDO: FOTO -->
+
+    <div class="register-left">
+
+        <div class="image-content">
+
+            <h2>
+                Floresça sua beleza.
+                Descubra sua essência.
+            </h2>
+
+            <p>
+                Inspirada na delicadeza das flores de Sakura
+                e no charme de Nova York, a Angel's reúne
+                joias exclusivas para transformar pequenos
+                detalhes em momentos inesquecíveis.
+            </p>
+
+            <span>
+                Angel's — Elegância em cada detalhe. 💗
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- LADO DIREITO: FORMULÁRIO -->
+
+    <div class="register-right">
+
+        <div class="register-content">
+
+            <div class="logo">
+
+                <div class="logo-icon">💘</div>
+
+                <h1>Angel's</h1>
+
+                <p>Faça parte do nosso universo de elegância.</p>
+
+            </div>
+
+            <form asp-controller="Account"
+                  asp-action="Register"
+                  method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <label for="Name">Nome completo</label>
+
+                    <input type="text"
+                           id="Name"
+                           name="Name"
+                           placeholder="Digite seu nome completo"
+                           required />
+                </div>
+
+                <div class="form-group">
+                    <label for="Email">E-mail</label>
+
+                    <input type="email"
+                           id="Email"
+                           name="Email"
+                           placeholder="Digite seu e-mail"
+                           required />
+                </div>
+
+                <div class="form-group">
+                    <label for="Password">Senha</label>
+
+                    <input type="password"
+                           id="Password"
+                           name="Password"
+                           placeholder="Crie uma senha"
+                           required />
+                </div>
+
+                <div class="form-group">
+                    <label for="ConfirmPassword">
+                        Confirmar senha
+                    </label>
+
+                    <input type="password"
+                           id="ConfirmPassword"
+                           name="ConfirmPassword"
+                           placeholder="Digite sua senha novamente"
+                           required />
+                </div>
+
+                <label class="terms">
+                    <input type="checkbox" required />
+
+                    <span>
+                        Concordo com os
+                        <a href="#">Termos de Uso</a>
+                        e a
+                        <a href="#">Política de Privacidade</a>.
+                    </span>
+                </label>
+
+                <button type="submit" class="btn-register">
+                    Criar minha conta
+                </button>
+
+                <div class="login-link">
+                    Já possui uma conta?
+
+                    <a asp-controller="Account"
+                       asp-action="Login">
+                        Entrar
+                    </a>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
