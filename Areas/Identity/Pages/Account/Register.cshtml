@@ -36,11 +36,9 @@
         min-height: 760px;
 
         background-image:
-            linear-gradient(
-                to top,
+            linear-gradient(to top,
                 rgba(30, 15, 23, 0.72),
-                rgba(30, 15, 23, 0.02)
-            ),
+                rgba(30, 15, 23, 0.02)),
             url('/images/register-sakura.jpg');
 
         background-size: cover;
@@ -281,78 +279,41 @@
 
             </div>
 
-            <form asp-controller="Account"
-                  asp-action="Register"
-                  method="post">
+            <form id="registerForm" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" method="post">
 
-                @Html.AntiForgeryToken()
+                <div asp-validation-summary="ModelOnly" class="register-validation" role="alert"></div>
 
                 <div class="form-group">
-                    <label for="Name">Nome completo</label>
-
-                    <input type="text"
-                           id="Name"
-                           name="Name"
-                           placeholder="Digite seu nome completo"
+                    <label asp-for="Input.Email">E-mail</label>
+                    <input asp-for="Input.Email" type="email" autocomplete="username" placeholder="Digite seu e-mail"
                            required />
+                    <span asp-validation-for="Input.Email" class="register-validation"></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="Email">E-mail</label>
-
-                    <input type="email"
-                           id="Email"
-                           name="Email"
-                           placeholder="Digite seu e-mail"
-                           required />
+                    <label asp-for="Input.Password">Senha</label>
+                    <input asp-for="Input.Password" type="password" autocomplete="new-password"
+                           placeholder="Crie uma senha" required />
+                    <span asp-validation-for="Input.Password" class="register-validation"></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="Password">Senha</label>
-
-                    <input type="password"
-                           id="Password"
-                           name="Password"
-                           placeholder="Crie uma senha"
-                           required />
+                    <label asp-for="Input.ConfirmPassword">Confirmar senha</label>
+                    <input asp-for="Input.ConfirmPassword" type="password" autocomplete="new-password"
+                           placeholder="Digite sua senha novamente" required />
+                    <span asp-validation-for="Input.ConfirmPassword" class="register-validation"></span>
                 </div>
 
-                <div class="form-group">
-                    <label for="ConfirmPassword">
-                        Confirmar senha
-                    </label>
-
-                    <input type="password"
-                           id="ConfirmPassword"
-                           name="ConfirmPassword"
-                           placeholder="Digite sua senha novamente"
-                           required />
-                </div>
-
-                <label class="terms">
-                    <input type="checkbox" required />
-
-                    <span>
-                        Concordo com os
-                        <a href="#">Termos de Uso</a>
-                        e a
-                        <a href="#">Política de Privacidade</a>.
-                    </span>
-                </label>
-
-                <button type="submit" class="btn-register">
+                <button id="registerSubmit" type="submit" class="btn-register">
                     Criar minha conta
                 </button>
 
                 <div class="login-link">
                     Já possui uma conta?
-
-                    <a asp-controller="Account"
-                       asp-action="Login">
+                    <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Model.ReturnUrl">
                         Entrar
                     </a>
                 </div>
-
             </form>
 
         </div>
